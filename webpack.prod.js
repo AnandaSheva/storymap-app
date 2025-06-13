@@ -5,6 +5,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = merge(common, {
   mode: 'production',
+  output: {
+    // Tambahkan publicPath untuk GitHub Pages
+    publicPath: process.env.NODE_ENV === 'production' ? '/storymap-app/' : '/',
+  },
   module: {
     rules: [
       {
