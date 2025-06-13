@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>StoryMap</title><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#ea1667"><meta name="description" content="Aplikasi StoryMap interaktif untuk menyampaikan cerita berbasis lokasi"><link rel="apple-touch-icon" href="favicon.png"><link rel="icon" href="favicon.png"><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/><script defer="defer" src="app.bundle.js"></script><link href="app.css" rel="stylesheet"></head><body><header><button id="skip-link" class="skip-link">Menuju konten utama</button><div class="header-content container"><a class="brand-name__link" href="#/"><img class="brand-name__link__image" src="images/logo.png" alt="StoryMap Logo"/> <span class="brand-name__link__text">StoryMap App</span></a><nav id="navigation-drawer" class="navigation-drawer"><ul id="navlist-main" class="navigation-drawer__navlist-main"></ul><ul id="navlist" class="navigation-drawer__navlist"></ul></nav><button id="drawer-button" class="drawer-button">☰</button></div></header><main tabindex="-1" id="main-content" class="main-content"><div class="new-form__location__container"><div class="new-form__location__map__container"><div id="map" class="new-form__location__map"></div><div id="map-loading-container"></div></div><div class="new-form__location__lat-lng"><input name="latitude"> <input name="longitude"></div><div id="lat-lng-display" style="margin-top:8px; color:#333; font-size:0.95rem;">Koordinat: <span id="lat-value">-</span>, <span id="lng-value">-</span></div></div></main><footer><div class="container"><hr/><div class="footer-content"><a class="brand-name__link" href="#/"><img class="brand-name__link__image" src="images/logo.png" alt="CityCare Logo"/> <span class="brand-name__link__text">StoryMap App</span></a><p class="copyright">&copy; @2025 Sheva StoryMap. All rights reserved.</p></div></div></footer><script>// Pada afterRender, setelah update input latitude/longitude, tambahkan update ke display:
+      this.#form.elements.namedItem('latitude').value = latitude;
+      this.#form.elements.namedItem('longitude').value = longitude;
+      document.getElementById('lat-value').textContent = latitude;
+      document.getElementById('lng-value').textContent = longitude;
+
+      // Pada event marker moveend dan map click, tambahkan update ke display:
+      this.#form.elements.namedItem('latitude').value = lat;
+      this.#form.elements.namedItem('longitude').value = lng;
+      document.getElementById('lat-value').textContent = lat;
+      document.getElementById('lng-value').textContent = lng;
+
+      // ...dan pada map click:
+      this.#form.elements.namedItem('latitude').value = event.latlng.lat;
+      this.#form.elements.namedItem('longitude').value = event.latlng.lng;
+      document.getElementById('lat-value').textContent = event.latlng.lat;
+      document.getElementById('lng-value').textContent = event.latlng.lng;</script></body></html>
